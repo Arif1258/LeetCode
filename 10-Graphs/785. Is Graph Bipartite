@@ -1,0 +1,29 @@
+1class Solution {
+2    public boolean isBipartite(int[][] graph) {
+3        int n = graph.length;
+4        int[] color = new int[n];
+5        for (int i = 0; i < n; i++) {
+6            color[i] = -1;
+7        }
+8        Queue<Integer> q = new LinkedList<>();
+9        for (int i = 0; i < n; i++) {
+10            if (color[i] == -1) {
+11                q.add(i);
+12                color[i] = 0;
+13                while (!q.isEmpty()) {
+14                    int curr = q.remove();
+15                    for (int neigh : graph[curr]) {
+16                        if (color[neigh] == -1) {
+17                            int nextColor = (color[curr] == 0) ? 1 : 0;
+18                            color[neigh] = nextColor;
+19                            q.add(neigh);
+20                        } else if (color[neigh] == color[curr]) {
+21                            return false;
+22                        }
+23                    }
+24                }
+25            }
+26        }
+27        return true;
+28    }
+29}
