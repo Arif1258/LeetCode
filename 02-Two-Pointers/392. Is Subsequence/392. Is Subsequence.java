@@ -1,16 +1,14 @@
-1class Solution {
-2    public boolean isSubsequence(String s, String t) {
-3        int left = 0;
-4        int right = 0;
-5
-6        while(left < s.length() && right < t.length()){
-7            if(s.charAt(left) == t.charAt(right)){
-8                left++;
-9            }
-10            right++;
-11        }
-12        return s.length() == left;
-13
-14
-15    }
-16}
+class Solution(object):
+    def isSubsequence(self, s, t):
+        abc=
+        #method finds s in the t , and then it writes on the abc string.
+        for i in range(len(t)):
+            for j in range(len(s)):
+                if s[j]== t[i]:
+                    abc += t[i]
+                    break
+        #if they are some , it will be true or if it has it ,it will be true aba -> baba like that.
+        if abc == s  or abc.find(s)>0 :
+            return True
+        else:
+            return False
