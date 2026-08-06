@@ -5,13 +5,16 @@
 5
 6        if(n == 1) return nums[0];
 7
-8        dp[0] = nums[0];
-9        dp[1] = Math.max(nums[0] , nums[1]);
-10
-11        for(int i=2; i<n; i++){
-12            dp[i] = Math.max(dp[i-1],dp[i-2]+nums[i]);
-13        }
-14        return dp[n-1];
-15
-16    }
-17}
+8        int prev1 = nums[0];
+9        int prev2 = Math.max(nums[0] , nums[1]);
+10        int result = prev2;
+11
+12        for(int i=2; i<n; i++){
+13            result = Math.max(prev2,prev1+nums[i]);
+14            prev1=prev2;
+15            prev2=result;
+16        }
+17        return result;
+18
+19    }
+20}
