@@ -6,13 +6,15 @@
 6
 7        int[] dp = new int[n + 1];
 8
-9        dp[0] = 0;
-10        dp[1] = 1;
+9        int prev2 = 0;
+10        int prev1 = 1;
 11
 12        for (int i = 2; i <= n; i++) {
-13            dp[i] = dp[i - 1] + dp[i - 2];
-14        }
-15
-16        return dp[n];
-17    }
-18}
+13            int current = prev1 + prev2;
+14            prev2 = prev1;
+15            prev1 = current;
+16        }
+17
+18        return prev1;
+19    }
+20}
