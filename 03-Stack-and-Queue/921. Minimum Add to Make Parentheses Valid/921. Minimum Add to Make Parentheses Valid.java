@@ -1,20 +1,16 @@
 1class Solution {
 2    public int minAddToMakeValid(String s) {
-3        int balance = 0;
-4        int additions = 0;
+3        int bal = 0;
+4        int extra = 0;
 5
-6        for (char ch : s.toCharArray()) {
-7            if (ch == '(') {
-8                balance++;
-9            } else {
-10                if (balance > 0) {
-11                    balance--;
-12                } else {
-13                    additions++;
-14                }
-15            }
-16        }
-17
-18        return additions + balance;
-19    }
-20}
+6        for(char ch : s.toCharArray()){
+7            if(ch == '('){
+8                bal++;
+9            }else if(ch == ')'){
+10                if(bal > 0) bal--;
+11                else extra++;
+12            }
+13        }
+14        return extra+bal;
+15    }
+16}
